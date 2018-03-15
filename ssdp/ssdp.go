@@ -59,9 +59,6 @@ func SSDPRawSearch(httpu *httpu.HTTPUClient, searchTarget string, maxWaitSeconds
 			log.Printf("ssdp: got response status code %q in search response", response.Status)
 			continue
 		}
-		if st := response.Header.Get("ST"); st != searchTarget {
-			continue
-		}
 		location, err := response.Location()
 		if err != nil {
 			log.Printf("ssdp: no usable location in search response (discarding): %v", err)
